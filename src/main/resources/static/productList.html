@@ -86,11 +86,24 @@
 			$(document).on("change", "input", function(){
 				var id = $(this).attr('id');
 				console.log(id);
-				var url = 'http://localhost:8080/product/'+id;
+				var bidVal = $(this).val();
+				console.log(bidVal)
+				var url = 'http://localhost:8080/product/'+id+'?bidval='+bidVal+'&user='+localStorage.getItem('userid');
 				console.log(url);
-				//write the logic to save the bid amount
 				$('#t'+id).empty();
 				$('#t'+id).html("The bid is sent!!! check if you got the email!!!");
+				$.when($.ajax({
+	                url: url,
+	                type: "PUT"
+
+	            })).done(function (products) {
+	            	$('#t'+id).html("The bid is sent!!! check if you got the email!!!");
+
+	            }).fail(function () {
+	                console.log("not done");
+	                $('#t'+id).html("The bid is failed!!! may be you quoted less price try after sometime");
+	            });
+				
 			})
 			
 			

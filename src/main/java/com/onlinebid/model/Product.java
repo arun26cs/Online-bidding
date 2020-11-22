@@ -18,8 +18,11 @@ public class Product {
 	@SequenceGenerator(name = "prod_seq", sequenceName = "prod_seq", initialValue = 1, allocationSize=1)
 	private Integer productid;
 	private String name;
-	private float price;
 	private Timestamp expirytime;
+	private String soldflag;
+	private String nextbid;
+	private String userid;
+	private float bidprice;
 	
 	
 	public Timestamp getExpirytime() {
@@ -40,17 +43,48 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public float getPrice() {
-		return price;
+	
+	 
+	public String getSoldflag() {
+		return soldflag;
 	}
-	public void setPrice(float price) {
-		this.price = price;
+	public void setSoldflag(String soldflag) {
+		this.soldflag = soldflag;
 	}
-	public Product(int productid, String name, float price) {
+	public String getNextbid() {
+		return nextbid;
+	}
+	public void setNextbid(String nextbid) {
+		this.nextbid = nextbid;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public float getBidprice() {
+		return bidprice;
+	}
+	public void setBidprice(float bidprice) {
+		this.bidprice = bidprice;
+	}
+	public Product(Integer productid, String name, Timestamp expirytime, String soldflag, String nextbid, String userid,
+			float bidprice) {
 		super();
 		this.productid = productid;
 		this.name = name;
-		this.price = price;
+		this.expirytime = expirytime;
+		this.soldflag = soldflag;
+		this.nextbid = nextbid;
+		this.userid = userid;
+		this.bidprice = bidprice;
+	}
+	
+	@Override
+	public String toString() {
+		return "Product [productid=" + productid + ", name=" + name + ", expirytime=" + expirytime + ", soldflag="
+				+ soldflag + ", nextbid=" + nextbid + ", userid=" + userid + ", bidprice=" + bidprice + "]";
 	}
 	public Product() {
 		 
